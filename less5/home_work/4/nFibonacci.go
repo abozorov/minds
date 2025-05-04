@@ -4,7 +4,20 @@ import "fmt"
 
 func nFibonacci(n int) (fibonacci []int) {
 	fibonacci = make([]int, 0, n)
-	fibonacci = append(fibonacci, 0, 1)
+
+	if n == 0 {
+		return
+	}
+	fibonacci = append(fibonacci, 0)
+
+	if n == 1 {
+		return
+	}
+	
+	fibonacci = append(fibonacci, 1)
+	if n == 2 {
+		return
+	}
 
 	for i := 2; i < n; i++ {
 		fibonacci = append(fibonacci, fibonacci[i-1]+fibonacci[i-2])
