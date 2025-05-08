@@ -26,7 +26,7 @@ func (a *Account) Deposit(amount float64) error {
 // Выбрали поинтер ресивер из-за того, что нам нужно менять данные оригинала
 func (a *Account) Withdraw(amount float64) bool {
 
-	if a.Balance-amount > 0 {
+	if a.Balance-amount > 0 && !(amount < 0) {
 		a.Balance -= amount
 		fmt.Printf("Снятие со счета %.2f сомони\n", amount)
 		return true
@@ -71,7 +71,7 @@ func main() {
 			fmt.Scan(&money)
 
 			if !acc.Withdraw(money) {
-				fmt.Printf("Недостаточно средств на счету!\nПопробуйте сумму поменьше!\n")
+				fmt.Printf("Недостаточно средств на счету или сумма отрицательна!\nПопробуйте сумму поменьше!\n")
 			}
 		case "bal":
 			fmt.Printf("Владелец счета %s, текущий баланс: %.2f\n", acc.Owner, acc.GetBalance())
