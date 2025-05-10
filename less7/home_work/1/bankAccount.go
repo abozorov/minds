@@ -63,7 +63,7 @@ func main() {
 
 			err := acc.Deposit(money)
 			if err != nil {
-				fmt.Println(err)
+				fmt.Println(err.Error())
 			}
 		case "wid":
 			fmt.Println("Сумма: ")
